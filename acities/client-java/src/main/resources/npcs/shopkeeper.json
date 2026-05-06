@@ -1,0 +1,15 @@
+{
+  "id": 1,
+  "name": "Shopkeeper",
+  "role": "merchant",
+  "personality": "friendly",
+  "schedule": [
+    {"time": "08:00", "activity": "open shop"},
+    {"time": "12:00", "activity": "lunch break"},
+    {"time": "18:00", "activity": "close shop"}
+  ],
+  "dialogue": {
+    "greeting": "Welcome to my shop!",
+    "farewell": "Come back soon!"
+  }
+}

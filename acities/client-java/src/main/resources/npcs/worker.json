@@ -1,0 +1,15 @@
+{
+  "id": 2,
+  "name": "Worker",
+  "role": "laborer",
+  "personality": "tired",
+  "schedule": [
+    {"time": "06:00", "activity": "wake up"},
+    {"time": "07:00", "activity": "go to work"},
+    {"time": "17:00", "activity": "return home"}
+  ],
+  "dialogue": {
+    "greeting": "Long day ahead...",
+    "farewell": "See you later."
+  }
+}

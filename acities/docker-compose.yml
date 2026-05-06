@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  auth-service:
+    build:
+      context: ./backend-csharp/src/AuthService
+      dockerfile: Dockerfile
+    ports:
+      - "5001:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+
+  gamestate-service:
+    build:
+      context: ./backend-csharp/src/GameStateService
+      dockerfile: Dockerfile
+    ports:
+      - "5002:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+
+  economy-service:
+    build:
+      context: ./backend-csharp/src/EconomyService
+      dockerfile: Dockerfile
+    ports:
+      - "5003:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+
+  social-service:
+    build:
+      context: ./backend-csharp/src/SocialService
+      dockerfile: Dockerfile
+    ports:
+      - "5004:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+
+  web-platform:
+    build:
+      context: ./web-platform
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"

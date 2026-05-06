@@ -1,0 +1,15 @@
+{
+  "id": 3,
+  "name": "Citizen",
+  "role": "resident",
+  "personality": "neutral",
+  "schedule": [
+    {"time": "08:00", "activity": "morning routine"},
+    {"time": "12:00", "activity": "socialize"},
+    {"time": "20:00", "activity": "sleep"}
+  ],
+  "dialogue": {
+    "greeting": "Hello there!",
+    "farewell": "Goodbye."
+  }
+}

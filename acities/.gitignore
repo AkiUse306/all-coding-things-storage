@@ -1,0 +1,52 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.iml
+
+# Java/Gradle
+.gradle/
+build/
+*/build/
+*.class
+
+# .NET
+bin/
+obj/
+**/bin/
+**/obj/
+*.user
+*.suo
+*.vs
+
+# Node
+node_modules/
+.next/
+yarn-error.log
+package-lock.json
+npm-debug.log
+
+# C++
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+*.o
+*.obj
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Logs
+*.log
+
+# Docker
+.env
+**/.env
+
+# Misc
+coverage/
