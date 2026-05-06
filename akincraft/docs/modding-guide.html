@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modding Guide - Akincraft</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #0d6efd;
+            --success: #198754;
+            --warning: #ffc107;
+            --danger: #dc3545;
+            --dark: #212529;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, #0b5ed7 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        nav {
+            background: var(--dark);
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+        
+        nav a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 1rem 1.5rem;
+            transition: background 0.3s;
+        }
+        
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        section {
+            margin-bottom: 3rem;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+            border-bottom: 3px solid var(--primary);
+            padding-bottom: 0.5rem;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        pre {
+            background: #f5f5f5;
+            padding: 1rem;
+            border-left: 4px solid var(--primary);
+            overflow-x: auto;
+            margin: 1rem 0;
+            border-radius: 0.25rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+        
+        code {
+            background: #f5f5f5;
+            padding: 0.2rem 0.5rem;
+            border-radius: 0.25rem;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .example-box {
+            background: #f0f7ff;
+            border-left: 4px solid var(--primary);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0.25rem;
+        }
+        
+        .tip {
+            background: #fff3cd;
+            border-left: 4px solid var(--warning);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0.25rem;
+        }
+        
+        .success {
+            background: #d4edda;
+            border-left: 4px solid var(--success);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0.25rem;
+        }
+        
+        ul {
+            margin: 1rem 0;
+            margin-left: 1.5rem;
+        }
+        
+        li {
+            margin: 0.5rem 0;
+        }
+        
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">← Back to Home</a></li>
+            <li><a href="#getting-started">Quick Start</a></li>
+            <li><a href="#features">Popular Mods</a></li>
+            <li><a href="#troubleshooting">Troubleshooting</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>🎮 Akincraft Modding Guide</h1>
+        <p>Learn how to create your own custom features and content</p>
+    </header>
+
+    <div class="container">
+        <section id="getting-started">
+            <h2>Getting Started with Modding</h2>
+            
+            <h3>Before You Start</h3>
+            <ul>
+                <li>Familiarity with Java or C++ (whichever stack you're using)</li>
+                <li>IDE like IntelliJ IDEA (Java) or Visual Studio (C++)</li>
+                <li>The Akincraft repository cloned locally</li>
+                <li>Basic understanding of game development concepts</li>
+            </ul>
+
+            <h3>Development Workflow</h3>
+            <div class="success">
+                <strong>💡 Pro Tip:</strong> Follow this workflow for smooth development:
+            </div>
+            <ol>
+                <li>Create a new branch: <code>git checkout -b feature/my-custom-feature</code></li>
+                <li>Make your changes to the source code</li>
+                <li>Build and test: <code>./gradlew run</code> (Java) or <code>cmake --build .</code> (C++)</li>
+                <li>Commit frequently: <code>git add .</code> and <code>git commit -m "Description"</code></li>
+                <li>Push to remote when ready</li>
+            </ol>
+
+            <h3>Project Setup</h3>
+            <pre>cd akincraft
+# For Java development
+cd java
+./gradlew build
+./gradlew run
+
+# For C++ development
+cd cpp
+mkdir -p build && cd build
+cmake ..
+cmake --build .
+./akincraft_cpp</pre>
+        </section>
+
+        <section id="features">
+            <h2>Popular Modding Projects</h2>
+
+            <h3>1️⃣ Add a New Block Type</h3>
+            <p><strong>Difficulty:</strong> Easy | <strong>Time:</strong> 15 minutes</p>
+            
+            <div class="example-box">
+                <strong>What you'll learn:</strong> How to extend the block system and add custom blocks to your world
+            </div>
+
+            <strong>Steps:</strong>
+            <ol>
+                <li>
+                    <strong>Define your block:</strong>
+                    <pre>// In BlockType.h (C++) or BlockType enum (Java)
+public enum BlockType {
+    // ... existing types
+    AMETHYST(50),
+    CRYSTAL(51);
+}</pre>
+                </li>
+                <li>
+                    <strong>Set block properties:</strong>
+                    <pre>// In your rendering/block manager code
+BlockProperties props = new BlockProperties();
+props.hardness = 1.5f;
+props.isOpaque = true;
+props.color = new Color(0x9966FF);  // Purple
+props.isBreakable = true;</pre>
+                </li>
+                <li>
+                    <strong>Add to world generation:</strong>
+                    <pre>// In terrain generation code
+if (y >= 20 && y <= 40) {
+    if (random.nextFloat() < 0.02f) {
+        chunk.setBlock(x, y, z, BlockType.AMETHYST);
+    }
+}</pre>
+                </li>
+                <li>Build and run the game - your new block should appear!</li>
+            </ol>
+
+            <div class="tip">
+                <strong>💡 Tips:</strong> Start with a unique color so you can easily spot your block. Use hardness values between 0.5 and 5.0 for most ore blocks.
+            </div>
+
+            <hr style="margin: 2rem 0; border: none; border-top: 1px solid #ddd;">
+
+            <h3>2️⃣ Create a Custom Mob</h3>
+            <p><strong>Difficulty:</strong> Medium | <strong>Time:</strong> 30 minutes</p>
+
+            <div class="example-box">
+                <strong>What you'll learn:</strong> Entity system and simple AI behavior
+            </div>
+
+            <strong>Code Template:</strong>
+            <pre>// Create a new file: src/CustomMob.java
+public class Slime extends Entity {
+    private float bounceTimer = 0;
+    private float bounceSpeed = 0.5f;
+    
+    public Slime(Vector3f position) {
+        super(position);
+        this.health = 20;
+        this.speed = 0.1f;
+    }
+    
+    @Override
+    public void update(float deltaTime) {
+        // Bouncing behavior
+        bounceTimer += deltaTime;
+        if (bounceTimer > 1.5f) {
+            this.velocity.y = bounceSpeed;
+            bounceTimer = 0;
+        }
+        
+        // Horizontal movement (random wander)
+        if (bounceTimer % 0.5f < deltaTime) {
+            this.velocity.x = (float) Math.random() * 0.2f - 0.1f;
+            this.velocity.z = (float) Math.random() * 0.2f - 0.1f;
+        }
+        
+        // Apply gravity
+        Physics.applyGravity(this, deltaTime);
+        
+        // Update position
+        position = position.add(velocity);
+    }
+    
+    @Override
+    public void render() {
+        // Render your slime here
+    }
+}</pre>
+
+            <strong>Register your mob in the world:</strong>
+            <pre>// In EntityManager.java or World.java
+public void spawnSlimes(World world) {
+    for (int i = 0; i < 20; i++) {
+        Vector3f randomPos = world.getRandomGroundPosition();
+        world.entityManager.addEntity(new Slime(randomPos));
+    }
+}</pre>
+
+            <hr style="margin: 2rem 0; border: none; border-top: 1px solid #ddd;">
+
+            <h3>3️⃣ Design a New Biome</h3>
+            <p><strong>Difficulty:</strong> Medium | <strong>Time:</strong> 45 minutes</p>
+
+            <div class="example-box">
+                <strong>What you'll learn:</strong> Procedural generation and biome systems
+            </div>
+
+            <strong>Create your biome class:</strong>
+            <pre>// Create: src/CrimsonBiome.java
+public class CrimsonBiome extends Biome {
+    public CrimsonBiome() {
+        this.name = "Crimson Wastes";
+        this.temperature = 1.5f;      // Very hot
+        this.humidity = 0.0f;         // Very dry
+        this.baseHeight = 70;
+        
+        // Crimson color palette
+        this.skyColor = new Color(0xFF4444);
+        this.foliageColor = new Color(0xCC0000);
+        
+        // Blocks found in this biome
+        this.blockPalette = new BlockType[] {
+            BlockType.STONE,
+            BlockType.DIRT,
+            BlockType.SAND,
+            BlockType.LAVA,
+            BlockType.CRIMSON_WOOD,  // Custom block
+        };
+    }
+    
+    @Override
+    public void generateTerrain(Chunk chunk, NoiseGenerator noise) {
+        for (int x = 0; x < 16; x++) {
+            for (int z = 0; z < 16; z++) {
+                // Terrain is more rocky and barren
+                int height = (int) (noise.noise(x * 0.1f, z * 0.1f) * 20 + 70);
+                
+                for (int y = 0; y < height; y++) {
+                    if (y < height - 2) {
+                        chunk.setBlock(x, y, z, BlockType.STONE);
+                    } else {
+                        chunk.setBlock(x, y, z, BlockType.SAND);
+                    }
+                }
+            }
+        }
+    }
+}</pre>
+
+            <strong>Register in biome manager:</strong>
+            <pre>BiomeManager biomes = new BiomeManager();
+biomes.register(new CrimsonBiome(), 0.8f, 0.0f);  // temperature, humidity</pre>
+
+            <hr style="margin: 2rem 0; border: none; border-top: 1px solid #ddd;">
+
+            <h3>4️⃣ Implement a Crafting Recipe</h3>
+            <p><strong>Difficulty:</strong> Easy | <strong>Time:</strong> 10 minutes</p>
+
+            <div class="example-box">
+                <strong>What you'll learn:</strong> Inventory and crafting systems
+            </div>
+
+            <pre>// Add this to your crafting recipe list
+CraftingRecipe amethystSword = new CraftingRecipe(
+    new ItemStack[][] {
+        { new ItemStack(ItemType.AMETHYST), empty, empty },
+        { new ItemStack(ItemType.AMETHYST), empty, empty },
+        { new ItemStack(ItemType.STICK), empty, empty }
+    },
+    new ItemStack(ItemType.AMETHYST_SWORD, 1)
+);
+
+// Register the recipe
+craftingManager.registerRecipe(amethystSword);
+
+// Now players can craft this by arranging items in this pattern</pre>
+
+            <hr style="margin: 2rem 0; border: none; border-top: 1px solid #ddd;">
+
+            <h3>5️⃣ Add Weather Effects</h3>
+            <p><strong>Difficulty:</strong> Hard | <strong>Time:</strong> 1 hour</p>
+
+            <div class="example-box">
+                <strong>What you'll learn:</strong> Game systems and visual effects
+            </div>
+
+            <pre>// Create: src/WeatherSystem.java
+public class WeatherSystem {
+    public enum WeatherType {
+        CLEAR, RAIN, THUNDERSTORM, SANDSTORM
+    }
+    
+    private WeatherType currentWeather = WeatherType.CLEAR;
+    private float weatherDuration = 0;
+    private float weatherTimer = 0;
+    
+    public void update(float deltaTime) {
+        weatherTimer += deltaTime;
+        
+        if (weatherTimer >= weatherDuration) {
+            changeWeather();
+            weatherTimer = 0;
+        }
+    }
+    
+    private void changeWeather() {
+        WeatherType[] types = WeatherType.values();
+        currentWeather = types[(int)(Math.random() * types.length)];
+        weatherDuration = 60 + Math.random() * 300;  // 1-5 minutes
+        
+        applyWeatherEffects();
+    }
+    
+    private void applyWeatherEffects() {
+        switch(currentWeather) {
+            case RAIN:
+                // Add rain particles
+                // Reduce visibility
+                // Spawn water
+                break;
+            case THUNDERSTORM:
+                // Add lightning
+                // Add thunder sounds
+                // Spawn mobs
+                break;
+            case SANDSTORM:
+                // Add sand particles
+                // Reduce visibility more
+                // Damage player over time
+                break;
+        }
+    }
+}

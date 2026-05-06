@@ -1,0 +1,250 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Akincraft Hub";
+}
+
+<div class="hero-section mb-5">
+    <div class="text-center py-5">
+        <h1 class="display-4 fw-bold mb-3">Akincraft Hub</h1>
+        <p class="lead text-muted mb-4">The ultimate voxel engine platform with multiplayer, advanced terrain generation, and comprehensive game mechanics.</p>
+        <div class="d-flex gap-2 justify-content-center">
+            <a href="https://github.com/AkiUse306/akincraft" class="btn btn-primary btn-lg">View on GitHub</a>
+            <a href="/Features" class="btn btn-outline-primary btn-lg">Explore Features</a>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4 mb-5">
+    <div class="col-lg-4 mb-3">
+        <div class="card shadow-sm feature-highlight h-100">
+            <div class="card-header bg-primary text-white">
+                <h5 class="card-title mb-0">🎮 Java Implementation</h5>
+            </div>
+            <div class="card-body">
+                <p>Cross-platform voxel engine built with Java, Gradle, and LWJGL 3.3.1. Features multiplayer networking, procedural terrain generation, and comprehensive game mechanics.</p>
+                <small class="text-muted d-block mt-3">Latest: Full game features with 8+ advanced systems</small>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 mb-3">
+        <div class="card shadow-sm feature-highlight h-100">
+            <div class="card-header bg-success text-white">
+                <h5 class="card-title mb-0">🏗️ C++ Engine</h5>
+            </div>
+            <div class="card-body">
+                <p>High-performance voxel engine in C++ with OpenGL rendering via GLFW. Includes first-person controls, procedural terrain, mob spawning, and weapon systems.</p>
+                <small class="text-muted d-block mt-3">Location: <code>cpp/</code> directory</small>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 mb-3">
+        <div class="card shadow-sm feature-highlight h-100">
+            <div class="card-header bg-info text-white">
+                <h5 class="card-title mb-0">🌐 Web Portal</h5>
+            </div>
+            <div class="card-body">
+                <p>This website is implemented in C# with ASP.NET Core Razor Pages. Provides project information, feature showcase, block encyclopedia, and project navigation.</p>
+                <small class="text-muted d-block mt-3">Modern, responsive design with Bootstrap 5</small>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Core Features Section -->
+<div class="bg-light p-5 rounded mb-5">
+    <h2 class="mb-4">Core Features</h2>
+    <div class="row">
+        <div class="col-md-4 mb-3">
+            <div class="feature-box">
+                <h5 class="text-primary">⚡ Multiplayer</h5>
+                <p class="small">TCP-based networking with real-time player synchronization</p>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="feature-box">
+                <h5 class="text-success">🏔️ Terrain Gen</h5>
+                <p class="small">6 biomes with Perlin noise, caves, and strategic ore distribution</p>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="feature-box">
+                <h5 class="text-warning">⚒️ Crafting</h5>
+                <p class="small">15+ recipes for smelting, crafting, and cooking</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 mb-3">
+            <div class="feature-box">
+                <h5 class="text-info">📦 Inventory</h5>
+                <p class="small">Stack-limited items (64 max) with smart management</p>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="feature-box">
+                <h5 class="text-danger">❤️ Combat</h5>
+                <p class="small">Health, hunger, armor, and invulnerability mechanics</p>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="feature-box">
+                <h5 class="text-secondary">✨ Enchantments</h5>
+                <p class="small">10 enchantment types with level scaling (I-V)</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Block System Section -->
+<div class="card shadow-sm mb-5">
+    <div class="card-header bg-dark text-white">
+        <h4 class="card-title mb-0">🎨 Extended Block System (92 Blocks)</h4>
+    </div>
+    <div class="card-body">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h5>26 Authentic Minecraft Blocks (A-Z)!</h5>
+                <p>Build with the most comprehensive block system, featuring real Minecraft blocks in alphabetical order:</p>
+                <ul class="list-unstyled">
+                    <li>✓ <strong>Natural Terrain:</strong> Grass, Dirt, Stone, Sand, etc.</li>
+                    <li>✓ <strong>Ores:</strong> Coal, Iron, Gold, Diamond</li>
+                    <li>✓ <strong>Wood & Leaves:</strong> 3 tree types</li>
+                    <li>✓ <strong>Crafted Blocks:</strong> Planks, Stone, Vessels</li>
+                    <li>✓ <strong>Minecraft A-Z:</strong> Andesite to Zodiac Stone</li>
+                    <li>✓ <strong>Redstone:</strong> Dust, Repeater, Torch, Lever, Button</li>
+                </ul>
+            </div>
+            <div class="col-md-6 text-center">
+                <div class="block-stats">
+                    <div class="stat-item mb-3">
+                        <h3 class="text-primary">92</h3>
+                        <p>Total Blocks</p>
+                    </div>
+                    <div class="stat-item mb-3">
+                        <h3 class="text-success">26</h3>
+                        <p>Minecraft A-Z</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3 class="text-info">90+</h3>
+            </div>
+        </div>
+        <div class="mt-4">
+            <a href="/Blocks" class="btn btn-outline-primary">View All Blocks</a>
+        </div>
+    </div>
+</div>
+
+<!-- Quick Start Section -->
+<div class="row mb-5">
+    <div class="col-md-6">
+        <div class="bg-light p-4 rounded shadow-sm">
+            <h4>🚀 Getting Started</h4>
+            <p>Launch the engine from the <code>java/</code> or <code>cpp/</code> directory using the build instructions in the main repository README.</p>
+            <ul class="list-unstyled small">
+                <li><strong>Java:</strong> <code>cd java && ./gradlew run</code></li>
+                <li><strong>C++:</strong> <code>cd cpp && cmake build && make</code></li>
+                <li><strong>Website:</strong> <code>cd website && dotnet run</code></li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="bg-light p-4 rounded shadow-sm">
+            <h4>📚 Documentation</h4>
+            <p>Comprehensive documentation and specifications available in the repository.</p>
+            <ul class="list-unstyled small">
+                <li><a href="https://github.com/AkiUse306/akincraft#readme">📖 Repository README</a></li>
+                <li><a href="https://github.com/AkiUse306/akincraft/blob/main/ENGINE_SPEC.md">🔧 Engine Specification</a></li>
+                <li><a href="https://github.com/AkiUse306/akincraft/blob/main/CONTRIBUTING.md">🤝 Contributing Guide</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- API Section -->
+<div class="card shadow-sm">
+    <div class="card-header bg-dark text-white">
+        <h4 class="card-title mb-0">📡 API Integration</h4>
+    </div>
+    <div class="card-body">
+        <p>Project metadata is exposed via REST API for integration and monitoring:</p>
+        <div class="bg-light p-3 rounded mb-3">
+            <code class="text-monospace">/api/project</code>
+            <p class="small text-muted mt-2">Returns JSON describing the website and engine configuration</p>
+        </div>
+        <p class="text-muted small">This endpoint is useful for CI/CD pipelines, monitoring systems, and developer tools.</p>
+    </div>
+</div>
+
+<style>
+.hero-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 8px;
+    margin: -1rem -1rem 0 -1rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+.feature-highlight {
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.feature-highlight:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15) !important;
+}
+
+.feature-box {
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    border-left: 4px solid #007bff;
+    transition: all 0.3s ease;
+}
+
+.feature-box:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-left-color: #764ba2;
+}
+
+.stat-item {
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    border: 2px solid #f0f0f0;
+}
+
+.stat-item h3 {
+    margin: 0 0 8px 0;
+    font-weight: 700;
+}
+
+.stat-item p {
+    margin: 0;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+code {
+    background-color: #f5f5f5;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+</style>
+
+    <div class="col-md-6">
+        <div class="bg-light p-4 rounded shadow-sm">
+            <h4>API Endpoint</h4>
+            <p>Project metadata is exposed at:</p>
+            <pre class="small bg-white p-3 rounded">/api/project</pre>
+            <p>This endpoint returns JSON describing the website and engine.</p>
+        </div>
+    </div>
+</div>
+
+<div class="mt-4">
+    <p class="text-muted">Akincraft Hub is built to showcase the repository and provide a simple C# front-end alongside the C++ voxel engine.</p>
+</div>

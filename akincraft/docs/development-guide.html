@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Development Guide - Akincraft</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #0d6efd;
+            --dark: #212529;
+            --light: #f8f9fa;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, #0b5ed7 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        nav {
+            background: var(--dark);
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+        
+        nav a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 1rem 1.5rem;
+            transition: background 0.3s;
+        }
+        
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        section {
+            margin-bottom: 4rem;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+            border-bottom: 3px solid var(--primary);
+            padding-bottom: 0.5rem;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        code {
+            background: #f5f5f5;
+            padding: 0.2rem 0.5rem;
+            border-radius: 0.25rem;
+            font-family: 'Courier New', monospace;
+        }
+        
+        pre {
+            background: #f5f5f5;
+            padding: 1rem;
+            border-left: 4px solid var(--primary);
+            overflow-x: auto;
+            margin: 1rem 0;
+            border-radius: 0.25rem;
+        }
+        
+        .file-structure {
+            background: #f5f5f5;
+            padding: 1rem;
+            border-radius: 0.25rem;
+            font-family: monospace;
+            line-height: 1.8;
+            margin: 1rem 0;
+        }
+        
+        .info-box {
+            background: #e7f3ff;
+            border-left: 4px solid var(--primary);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0.25rem;
+        }
+        
+        .task-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+        
+        .task-list li {
+            padding: 0.5rem 0;
+            padding-left: 2rem;
+            position: relative;
+        }
+        
+        .task-list li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 0.75rem;
+            text-align: left;
+        }
+        
+        table th {
+            background: #f5f5f5;
+            font-weight: 600;
+        }
+        
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.75rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav a {
+                padding: 0.75rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">← Back to Home</a></li>
+            <li><a href="#setup">Setup</a></li>
+            <li><a href="#architecture">Architecture</a></li>
+            <li><a href="#customization">Customization</a></li>
+            <li><a href="#adding-features">Features</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>🛠️ Akincraft Development Guide</h1>
+        <p>Learn how to build and customize your own voxel engine</p>
+    </header>
+
+    <div class="container">
+        <section id="setup">
+            <h2>Getting Started</h2>
+            
+            <h3>Prerequisites</h3>
+            <ul class="task-list">
+                <li>Git installed</li>
+                <li>Java 21+ (for Java stack)</li>
+                <li>CMake & C++ compiler (for C++ stack)</li>
+                <li>Visual Studio or your preferred IDE</li>
+            </ul>
+
+            <h3>Clone & Setup</h3>
+            <pre>git clone https://github.com/AkiUse306/akincraft.git
+cd akincraft</pre>
+
+            <h3>Java Stack</h3>
+            <pre>cd java
+./gradlew build      # Build the project
+./gradlew run        # Run the game</pre>
+
+            <h3>C++ Stack</h3>
+            <pre>cd cpp
+mkdir -p build && cd build
+cmake ..
+cmake --build .
+./akincraft_cpp</pre>
+        </section>
+
+        <section id="architecture">
+            <h2>Engine Architecture</h2>
+
+            <h3>Project Structure</h3>
+            <div class="file-structure">
+java/
+├── src/main/java/akincraft/
+│   ├── App.java              # Main entry point
+│   ├── World.java            # World management
+│   ├── Chunk.java            # Chunk data structure
+│   ├── Entity.java           # Game entities
+│   ├── Renderer.java         # Rendering system
+│   ├── Physics.java          # Physics engine
+│   └── Inventory.java        # Inventory system
+├── build.gradle.kts          # Build configuration
+└── gradlew                   # Gradle wrapper
+
+cpp/
+├── src/
+│   ├── App.cpp/h             # Main application
+│   ├── World.cpp/h           # World system
+│   ├── Chunk.cpp/h           # Chunk management
+│   ├── Renderer.cpp/h        # OpenGL renderer
+│   ├── Entity.cpp/h          # Entity system
+│   └── Physics.cpp/h         # Physics
+├── CMakeLists.txt            # Build configuration
+└── build/                    # Build output
+            </div>
+
+            <h3>Core Systems</h3>
+            <table>
+                <tr>
+                    <th>System</th>
+                    <th>Responsibility</th>
+                    <th>Key Classes/Files</th>
+                </tr>
+                <tr>
+                    <td><strong>World</strong></td>
+                    <td>Chunk management and terrain generation</td>
+                    <td>World.cpp/java, Chunk.cpp/java</td>
+                </tr>
+                <tr>
+                    <td><strong>Renderer</strong></td>
+                    <td>OpenGL rendering and mesh generation</td>
+                    <td>Renderer.cpp/java</td>
+                </tr>
+                <tr>
+                    <td><strong>Entity</strong></td>
+                    <td>Players, mobs, and game objects</td>
+                    <td>Entity.cpp/java, EntityManager.cpp/java</td>
+                </tr>
+                <tr>
+                    <td><strong>Physics</strong></td>
+                    <td>Collision detection and movement</td>
+                    <td>Physics.cpp/java (implicitly in movement code)</td>
+                </tr>
+                <tr>
+                    <td><strong>Inventory</strong></td>
+                    <td>Item management and crafting</td>
+                    <td>Inventory.cpp/java, Item.cpp/java</td>
+                </tr>
+            </table>
+
+            <h3>Game Loop</h3>
+            <pre>// Pseudocode - Main game loop
+while (game_running) {
+    // Input
+    handle_input();
+    
+    // Update
+    update_world();
+    update_entities();
+    update_physics();
+    update_inventory();
+    
+    // Render
+    generate_chunk_meshes();
+    render_scene();
+    
+    // Frame timing
+    sleep_to_target_fps();
+}</pre>
+        </section>
+
+        <section id="customization">
+            <h2>Customizing Your Game</h2>
+
+            <h3>Adding Block Types</h3>
+            <div class="info-box">
+                <strong>Location:</strong> Look for <code>BlockType.h</code> (C++) or block type definitions in Java
+            </div>
+            <pre>// Example: Adding a new block type
+enum BlockType {
+    AIR = 0,
+    STONE = 1,
+    DIRT = 2,
+    GRASS = 3,
+    // ADD YOUR BLOCKS HERE
+    CUSTOM_ORE = 50,
+    CUSTOM_WOOD = 51,
+    // ...
+}</pre>
+
+            <h3>Modifying Block Colors</h3>
+            <p>Each block type needs a color for rendering. Find the texture/color mapping in:</p>
+            <ul class="task-list">
+                <li>Java: Look for color arrays in rendering code</li>
+                <li>C++: Check Renderer.cpp for block color definitions</li>
+            </ul>
+
+            <h3>Tweaking World Generation</h3>
+            <p>The procedural generation uses noise functions. You can customize:</p>
+            <ul class="task-list">
+                <li><strong>Biome parameters</strong> - Temperature, humidity thresholds</li>
+                <li><strong>Noise scales</strong> - Height variation, cave frequency</li>
+                <li><strong>Ore distribution</strong> - Depth ranges, spawn rates</li>
+            </ul>
+
+            <h3>Adding Custom Entities</h3>
+            <pre>// Extend Entity class with your custom entity
+class MyCreature : public Entity {
+    virtual void update(float deltaTime) override {
+        // Your custom logic here
+        move_towards_player();
+        attack_if_close();
+        take_damage_if_hit();
+    }
+};</pre>
+
+            <h3>Creating New Biomes</h3>
+            <p>To add a new biome:</p>
+            <ol>
+                <li>Define biome properties (temperature, humidity, height)</li>
+                <li>Add block palette for the biome</li>
+                <li>Modify terrain generation to use biome data</li>
+                <li>Add unique entities/features to the biome</li>
+            </ol>
+        </section>
+
+        <section id="adding-features">
+            <h2>Adding Major Features</h2>
+
+            <h3>1. Multiplayer Support</h3>
+            <div class="info-box">
+                <strong>Note:</strong> Java version has networking foundation
+            </div>
+            <ul class="task-list">
+                <li>Set up TCP/WebSocket server</li>
+                <li>Implement player state synchronization</li>
+                <li>Handle chunk streaming to multiple clients</li>
+                <li>Add player identification and authentication</li>
+            </ul>
+
+            <h3>2. Advanced Crafting System</h3>
+            <pre>// Define recipes
+Recipe iron_pickaxe = {
+    input: [iron_ingot, iron_ingot, iron_ingot,
+            stick, stick],
+    output: pickaxe,
+    pattern: [
+        [I, I, I],
+        [_, S, _],
+        [_, S, _]
+    ]
+};</pre>
+
+            <h3>3. Mob AI System</h3>
+            <ul class="task-list">
+                <li>Implement state machine (Idle, Wander, Chase, Attack, Flee)</li>
+                <li>Add pathfinding (A* or simple steering)</li>
+                <li>Create loot drops on death</li>
+                <li>Add breeding/spawning mechanics</li>
+            </ul>
+
+            <h3>4. Enhanced Lighting</h3>
+            <ul class="task-list">
+                <li>Implement light propagation</li>
+                <li>Add light sources (torches, lava, etc.)</li>
+                <li>Shadow calculation for realistic lighting</li>
+                <li>Dynamic lighting for moving objects</li>
+            </ul>
+
+            <h3>5. Weather System</h3>
+            <pre>// Weather states
+enum WeatherType {
+    CLEAR,
+    RAIN,
+    THUNDERSTORM,
+    SNOW
+};
+
+// Update weather
+void update_weather(float deltaTime) {
+    weather_timer += deltaTime;
+    if (weather_timer > weather_duration) {
+        change_to_random_weather();
+        weather_timer = 0;
+    }
+}</pre>
+
+            <h3>6. Persistent Data Storage</h3>
+            <ul class="task-list">
+                <li>Serialize chunks to disk (JSON, binary, or custom format)</li>
+                <li>Implement save/load system</li>
+                <li>Store player position and inventory</li>
+                <li>Track modified chunks since last save</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Development Tips</h2>
+            
+            <h3>Performance Optimization</h3>
+            <ul class="task-list">
+                <li>Use frustum culling to skip off-screen chunks</li>
+                <li>Implement LOD (Level of Detail) for distant chunks</li>
+                <li>Cache mesh generation results</li>
+                <li>Use object pooling for frequently created objects</li>
+            </ul>
+
+            <h3>Testing Your Changes</h3>
+            <ul class="task-list">
+                <li>Build frequently to catch compile errors early</li>
+                <li>Test in small chunks - don't change too much at once</li>
+                <li>Use debug visualization for terrain/physics debugging</li>
+                <li>Profile FPS and memory usage regularly</li>
+            </ul>
+
+            <h3>Resources</h3>
+            <ul class="task-list">
+                <li><strong>OpenGL:</strong> learnopengl.com - Graphics programming</li>
+                <li><strong>Procedural Generation:</strong> Perlin noise, Voronoi diagrams</li>
+                <li><strong>Physics:</strong> AABB collision, ray casting techniques</li>
+                <li><strong>Engine Design:</strong> Game loop patterns, ECS architecture</li>
+            </ul>
+        </section>
+    </div>
+
+    <footer>
+        <p><strong>Akincraft Development Guide</strong></p>
+        <p>For questions, check the <a href="https://github.com/AkiUse306/akincraft" style="color: #0dcaf0;">GitHub repository</a></p>
+    </footer>
+</body>
+</html>

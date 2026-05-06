@@ -1,0 +1,6 @@
+@AI.CodeAssistant.API_HostAddress = http://localhost:5222
+
+GET {{AI.CodeAssistant.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

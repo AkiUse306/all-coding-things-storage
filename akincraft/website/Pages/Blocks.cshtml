@@ -1,0 +1,453 @@
+@page
+@model BlocksModel
+@{
+    ViewData["Title"] = "Game Blocks - Akincraft";
+}
+
+<div class="page-header mb-4">
+    <h1 class="display-5">Game Blocks</h1>
+    <p class="text-muted">Explore all 67 blocks available in Akincraft, from natural terrain to decorative blocks.</p>
+</div>
+
+<div class="row mb-4">
+    <div class="col-md-3">
+        <div class="input-group">
+            <input type="text" class="form-control" id="blockSearch" placeholder="Search blocks...">
+            <button class="btn btn-outline-secondary" type="button">Search</button>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-9">
+        <!-- Natural Terrain -->
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header bg-dark text-white">
+                <h5 class="mb-0">Natural Terrain</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <div class="block-item d-flex align-items-center p-2 bg-light rounded">
+                            <div class="block-icon bg-success me-3" style="width: 40px; height: 40px;"></div>
+                            <div>
+                                <strong>Grass Block</strong>
+                                <br><small class="text-muted">Hardness: 0.6 | Tool: Shovel</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="block-item d-flex align-items-center p-2 bg-light rounded">
+                            <div class="block-icon bg-warning me-3" style="width: 40px; height: 40px;"></div>
+                            <div>
+                                <strong>Dirt</strong>
+                                <br><small class="text-muted">Hardness: 0.5 | Tool: Shovel</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="block-item d-flex align-items-center p-2 bg-light rounded">
+                            <div class="block-icon bg-secondary me-3" style="width: 40px; height: 40px;"></div>
+                            <div>
+                                <strong>Stone</strong>
+                                <br><small class="text-muted">Hardness: 1.5 | Tool: Pickaxe</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="block-item d-flex align-items-center p-2 bg-light rounded">
+                            <div class="block-icon" style="background-color: #EDC9AF; width: 40px; height: 40px;"></div>
+                            <div class="ms-3">
+                                <strong>Sand</strong>
+                                <br><small class="text-muted">Hardness: 0.5 | Tool: Shovel</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-muted small mt-3"><strong>Total Terrain Blocks:</strong> 11</p>
+            </div>
+        </div>
+
+        <!-- Ores -->
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header bg-dark text-white">
+                <h5 class="mb-0">Ores</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <div class="block-item d-flex align-items-center p-2 bg-light rounded">
+                            <div class="block-icon bg-dark me-3" style="width: 40px; height: 40px;"></div>
+                            <div>
+                                <strong>Coal Ore</strong>
+                                <br><small class="text-muted">Hardness: 3 | Tool: Pickaxe</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="block-item d-flex align-items-center p-2 bg-light rounded">
+                            <div class="block-icon" style="background: linear-gradient(45deg, #666, #999); width: 40px; height: 40px;"></div>
+                            <div class="ms-3">
+                                <strong>Iron Ore</strong>
+                                <br><small class="text-muted">Hardness: 3 | Tool: Stone Pickaxe</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="block-item d-flex align-items-center p-2 bg-light rounded">
+                            <div class="block-icon" style="background-color: #DAA520; width: 40px; height: 40px;"></div>
+                            <div class="ms-3">
+                                <strong>Gold Ore</strong>
+                                <br><small class="text-muted">Hardness: 3 | Tool: Iron Pickaxe</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="block-item d-flex align-items-center p-2 bg-light rounded">
+                            <div class="block-icon" style="background-color: #00CED1; width: 40px; height: 40px;"></div>
+                            <div class="ms-3">
+                                <strong>Diamond Ore</strong>
+                                <br><small class="text-muted">Hardness: 3 | Tool: Iron Pickaxe</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-muted small mt-3"><strong>Total Ore Blocks:</strong> 4</p>
+            </div>
+        </div>
+
+        <!-- Crafted Blocks -->
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header bg-dark text-white">
+                <h5 class="mb-0">Crafted & Functional</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <div class="block-item d-flex align-items-center p-2 bg-light rounded">
+                            <div class="block-icon" style="background: linear-gradient(45deg, #8B4513, #A0522D); width: 40px; height: 40px;"></div>
+                            <div class="ms-3">
+                                <strong>Crafting Table</strong>
+                                <br><small class="text-muted">Hardness: 2.5 | Tool: Axe</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="block-item d-flex align-items-center p-2 bg-light rounded">
+                            <div class="block-icon bg-secondary me-3" style="width: 40px; height: 40px;"></div>
+                            <div>
+                                <strong>Furnace</strong>
+                                <br><small class="text-muted">Hardness: 3.5 | Tool: Pickaxe</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="block-item d-flex align-items-center p-2 bg-light rounded">
+                            <div class="block-icon" style="background-color: #8B7355; width: 40px; height: 40px;"></div>
+                            <div class="ms-3">
+                                <strong>Chest</strong>
+                                <br><small class="text-muted">Hardness: 2.5 | Tool: Axe</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="block-item d-flex align-items-center p-2 bg-light rounded">
+                            <div class="block-icon" style="background-color: #663300; width: 40px; height: 40px;"></div>
+                            <div class="ms-3">
+                                <strong>Door</strong>
+                                <br><small class="text-muted">Hardness: 3 | Tool: Axe</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-muted small mt-3"><strong>Total Functional Blocks:</strong> 7</p>
+            </div>
+        </div>
+
+        <!-- Decorative A-Z Blocks -->
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header bg-dark text-white">
+                <h5 class="mb-0">Minecraft Blocks (A-Z)</h5>
+            </div>
+            <div class="card-body">
+                <p class="text-muted mb-4"><strong>26 authentic Minecraft blocks</strong>, one for each letter of the alphabet</p>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 mb-3">
+                        <div class="block-category">
+                            <h6 class="text-primary mb-2">A - Andesite</h6>
+                            <p class="small">Hardness: 1.6 | Gray decorative stone</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-3">
+                        <div class="block-category">
+                            <h6 class="text-primary mb-2">B - Bookshelf</h6>
+                            <p class="small">Hardness: 1.5 | Flammable, drops books</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-3">
+                        <div class="block-category">
+                            <h6 class="text-primary mb-2">C - Calcite</h6>
+                            <p class="small">Hardness: 0.75 | Light decorative block</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 mb-3">
+                        <div class="block-category">
+                            <h6 class="text-info mb-2">D - Deepslate</h6>
+                            <p class="small">Hardness: 3 | Deep underground stone</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-3">
+                        <div class="block-category">
+                            <h6 class="text-info mb-2">E - End Stone</h6>
+                            <p class="small">Hardness: 3 | Found in The End</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-3">
+                        <div class="block-category">
+                            <h6 class="text-success mb-2">F - Flowering Azalea</h6>
+                            <p class="small">Hardness: 0.2 | Natural plant block</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 mb-3">
+                        <div class="block-category">
+                            <h6 class="text-warning mb-2">G - Glowstone</h6>
+                            <p class="small">Hardness: 0.3 | Light source, drops dust</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-3">
+                        <div class="block-category">
+                            <h6 class="text-danger mb-2">H - Hopper</h6>
+                            <p class="small">Hardness: 3 | Item sorting mechanism</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-3">
+                        <div class="block-category">
+                            <h6 class="text-danger mb-2">I - Infested Stone</h6>
+                            <p class="small">Hardness: 0.75 | Cave spawner block</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 mb-3">
+                        <div class="block-category">
+                            <h6 class="text-warning mb-2">J - Jack o'Lantern</h6>
+                            <p class="small">Hardness: 0.5 | Halloween decoration</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-3">
+                        <div class="block-category">
+                            <h6 class="text-success mb-2">K - Kelp Block</h6>
+                            <p class="small">Hardness: 0.6 | Aquatic plant</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-3">
+                        <div class="block-category">
+                            <h6 class="text-info mb-2">L - Lantern</h6>
+                            <p class="small">Hardness: 3.5 | Decorative light source</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 mb-3">
+                        <div class="block-category">
+                            <h6 class="text-danger mb-2">M - Magma Block</h6>
+                            <p class="small">Hardness: 0.5 | Nether damage block</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-3">
+                        <div class="block-category">
+                            <h6 class="text-secondary mb-2">N - Note Block</h6>
+                            <p class="small">Hardness: 0.8 | Music block</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-3">
+                        <div class="block-category">
+                            <h6 class="text-secondary mb-2">O - Observer</h6>
+                            <p class="small">Hardness: 3 | Redstone sensor</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 mb-3">
+                        <div class="block-category">
+                            <h6 class="text-danger mb-2">P - Piston</h6>
+                            <p class="small">Hardness: 0.5 | Pushable block</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-3">
+                        <div class="block-category">
+                            <h6 class="text-warning mb-2">Q - Quartz Bricks</h6>
+                            <p class="small">Hardness: 0.8 | Nether decorative</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-3">
+                        <div class="block-category">
+                            <h6 class="text-success mb-2">R - Rooted Dirt</h6>
+                            <p class="small">Hardness: 0.5 | Underground plant base</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 mb-3">
+                        <div class="block-category">
+                            <h6 class="text-danger mb-2">S - Soul Sand</h6>
+                            <p class="small">Hardness: 0.5 | Nether slow block</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-3">
+                        <div class="block-category">
+                            <h6 class="text-info mb-2">T - Target</h6>
+                            <p class="small">Hardness: 0.5 | Redstone target</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-3">
+                        <div class="block-category">
+                            <h6 class="text-secondary mb-2">U - Unfinished Block</h6>
+                            <p class="small">Hardness: 2 | Custom block (U letter)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 mb-3">
+                        <div class="block-category">
+                            <h6 class="text-success mb-2">V - Vines</h6>
+                            <p class="small">Hardness: 0.2 | Climbing vegetation</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-3">
+                        <div class="block-category">
+                            <h6 class="text-danger mb-2">W - Warped Planks</h6>
+                            <p class="small">Hardness: 2 | Nether wood</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-3">
+                        <div class="block-category">
+                            <h6 class="text-secondary mb-2">X - Xeric Block</h6>
+                            <p class="small">Hardness: 1.5 | Desert stone variant</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 mb-3">
+                        <div class="block-category">
+                            <h6 class="text-warning mb-2">Y - Yellow Terracotta</h6>
+                            <p class="small">Hardness: 1.25 | Colored clay</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-3">
+                        <div class="block-category">
+                            <h6 class="text-dark mb-2">Z - Zodiac Stone</h6>
+                            <p class="small">Hardness: 2.5 | Magical stone (Z letter)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Statistics -->
+        <div class="card shadow-sm">
+            <div class="card-header bg-info text-white">
+                <h5 class="mb-0">Block Statistics</h5>
+            </div>
+            <div class="card-body">
+                <div class="row text-center">
+                    <div class="col-md-4 mb-3">
+                        <div class="stat-box p-3 bg-light rounded">
+                            <h4 class="text-primary">92</h4>
+                            <p class="small text-muted">Total Blocks</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="stat-box p-3 bg-light rounded">
+                            <h4 class="text-success">26</h4>
+                            <p class="small text-muted">Minecraft A-Z</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="stat-box p-3 bg-light rounded">
+                            <h4 class="text-warning">5</h4>
+                            <p class="small text-muted">Tool Types</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <p class="text-muted">
+                        <strong>Block Properties:</strong> Each block has hardness, blast resistance, tool requirements, and customizable drops.
+                        Blocks range from air (non-solid) to unbreakable blocks with varying rarity tiers.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="col-lg-3">
+        <div class="card shadow-sm mb-4 sticky-top" style="top: 20px;">
+            <div class="card-header bg-dark text-white">
+                <h5 class="mb-0">Block Categories</h5>
+            </div>
+            <div class="list-group list-group-flush">
+                <a href="#" class="list-group-item list-group-item-action active">All Blocks (67)</a>
+                <a href="#" class="list-group-item list-group-item-action">Terrain (11)</a>
+                <a href="#" class="list-group-item list-group-item-action">Ores (4)</a>
+                <a href="#" class="list-group-item list-group-item-action">Crafted (7)</a>
+                <a href="#" class="list-group-item list-group-item-action">Decorative (26)</a>
+                <a href="#" class="list-group-item list-group-item-action">Functional (19)</a>
+            </div>
+        </div>
+
+        <div class="card shadow-sm">
+            <div class="card-header bg-dark text-white">
+                <h5 class="mb-0">Tools Needed</h5>
+            </div>
+            <div class="card-body small">
+                <p><strong>⚒️ Pickaxe:</strong> Ores, Stone, Obsidian</p>
+                <p><strong>🪓 Axe:</strong> Wood, Doors, Fences</p>
+                <p><strong>🥄 Shovel:</strong> Dirt, Sand, Gravel</p>
+                <p><strong>⚔️ Sword:</strong> Combat oriented</p>
+                <p><strong>👐 Hands:</strong> Leaves, Plants, Food</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.block-icon {
+    border-radius: 4px;
+    border: 2px solid #ddd;
+}
+
+.block-item {
+    transition: all 0.3s ease;
+}
+
+.block-item:hover {
+    background-color: #f8f9fa !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.block-category {
+    padding: 12px;
+    background-color: #f8f9fa;
+    border-left: 4px solid #007bff;
+    border-radius: 4px;
+}
+
+.stat-box {
+    transition: transform 0.2s ease;
+}
+
+.stat-box:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.page-header {
+    border-bottom: 2px solid #e9ecef;
+    padding-bottom: 1rem;
+}
+</style>

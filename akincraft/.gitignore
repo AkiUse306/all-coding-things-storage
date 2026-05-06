@@ -1,0 +1,25 @@
+# Java
+.gradle/
+build/
+out/
+*.class
+*.jar
+
+# C++
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+build/
+*.o
+*.obj
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Editor
+.vscode/
+.idea/
+*.swp
+.DS_Store

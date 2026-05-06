@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Rivals - Local Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar">
+            <h1>🎮 Create Rivals</h1>
+            <div class="status">
+                <span id="connectionStatus" class="status-dot offline"></span>
+                <span id="statusText">Connecting...</span>
+            </div>
+        </nav>
+
+        <div class="main-content">
+            <div class="sidebar">
+                <ul class="menu">
+                    <li><a href="#dashboard" onclick="showTab('dashboard')" class="active">Dashboard</a></li>
+                    <li><a href="#players" onclick="showTab('players')">Players</a></li>
+                    <li><a href="#matchmaking" onclick="showTab('matchmaking')">Matchmaking</a></li>
+                    <li><a href="#stats" onclick="showTab('stats')">Stats</a></li>
+                </ul>
+            </div>
+
+            <div class="content">
+                <!-- Dashboard Tab -->
+                <div id="dashboard" class="tab active">
+                    <h2>Dashboard</h2>
+                    <div class="card-grid">
+                        <div class="card">
+                            <h3>Server Status</h3>
+                            <p id="serverStatus">Checking...</p>
+                            <p class="timestamp" id="serverTime"></p>
+                        </div>
+                        <div class="card">
+                            <h3>Active Queue</h3>
+                            <p id="queueCount">0</p>
+                            <button onclick="refreshQueue()">Refresh</button>
+                        </div>
+                        <div class="card">
+                            <h3>Total Players</h3>
+                            <p id="totalPlayers">0</p>
+                        </div>
+                        <div class="card">
+                            <h3>Latest Match</h3>
+                            <p id="latestMatch">-</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Players Tab -->
+                <div id="players" class="tab">
+                    <h2>Player Management</h2>
+                    <div class="search-bar">
+                        <input type="text" id="playerId" placeholder="Enter Player ID...">
+                        <button onclick="searchPlayer()">Search</button>
+                    </div>
+                    <div id="playerInfo" class="card" style="display: none;">
+                        <h3>Player Stats</h3>
+                        <table>
+                            <tr>
+                                <td>Player ID:</td>
+                                <td id="pId">-</td>
+                            </tr>
+                            <tr>
+                                <td>Score:</td>
+                                <td id="pScore">-</td>
+                            </tr>
+                            <tr>
+                                <td>Level:</td>
+                                <td id="pLevel">-</td>
+                            </tr>
+                        </table>
+                        <div class="button-group">
+                            <button onclick="addScore()">Add 10 Score</button>
+                            <button onclick="updateLevel()">Set Level to 5</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Matchmaking Tab -->
+                <div id="matchmaking" class="tab">
+                    <h2>Matchmaking</h2>
+                    <div class="search-bar">
+                        <input type="text" id="matchPlayerId" placeholder="Enter Player ID to create match...">
+                        <button onclick="createMatch()">Create Match</button>
+                    </div>
+                    <div id="matchResult" class="card" style="display: none;">
+                        <h3>Match Created</h3>
+                        <table>
+                            <tr>
+                                <td>Match ID:</td>
+                                <td id="mId">-</td>
+                            </tr>
+                            <tr>
+                                <td>Queue Type:</td>
+                                <td id="mQueue">-</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="card">
+                        <h3>Current Queue</h3>
+                        <ul id="queueList" class="list">
+                            <li>Loading...</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Stats Tab -->
+                <div id="stats" class="tab">
+                    <h2>Game Statistics</h2>
+                    <div class="search-bar">
+                        <input type="text" id="statsPlayerId" placeholder="Enter Player ID...">
+                        <button onclick="getStats()">Get Stats</button>
+                    </div>
+                    <div id="statsInfo" class="card" style="display: none;">
+                        <h3>Player Statistics</h3>
+                        <table>
+                            <tr>
+                                <td>Player ID:</td>
+                                <td id="sId">-</td>
+                            </tr>
+                            <tr>
+                                <td>Total Score:</td>
+                                <td id="sScore">-</td>
+                            </tr>
+                            <tr>
+                                <td>Current Level:</td>
+                                <td id="sLevel">-</td>
+                            </tr>
+                        </table>
+                        <div class="button-group">
+                            <input type="number" id="newScore" placeholder="New Score" style="padding: 8px; margin: 5px;">
+                            <button onclick="updateStats()">Update Stats</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="api.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

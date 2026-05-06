@@ -1,0 +1,5 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/AI.CodeAssistant.Domain/AI.CodeAssistant.Domain.csproj" />
+  </Folder>
+</Solution>

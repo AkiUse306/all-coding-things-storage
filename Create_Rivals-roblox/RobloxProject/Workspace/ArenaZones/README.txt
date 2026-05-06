@@ -1,0 +1,1 @@
+ArenaZones folder section for combat zones and arena-specific parts.

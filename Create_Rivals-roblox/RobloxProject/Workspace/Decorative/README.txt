@@ -1,0 +1,1 @@
+Decorative folder section for environment props and graffiti wall.

@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Akincraft - A dual-stack voxel sandbox engine with Java and C++ implementations">
+    <title>Akincraft - Voxel Engine Platform</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #0d6efd;
+            --success: #198754;
+            --info: #0dcaf0;
+            --danger: #dc3545;
+            --dark: #212529;
+            --light: #f8f9fa;
+            --text: #333;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: #fff;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, #0b5ed7 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        header p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 0.75rem 2rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        nav {
+            background: var(--dark);
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        nav a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 1rem 1.5rem;
+            transition: background 0.3s ease;
+        }
+        
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section {
+            padding: 60px 20px;
+        }
+        
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: var(--dark);
+        }
+        
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .card {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-header {
+            padding: 1.5rem;
+            font-weight: 600;
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .card-primary {
+            background: var(--primary);
+        }
+        
+        .card-success {
+            background: var(--success);
+        }
+        
+        .card-info {
+            background: var(--info);
+        }
+        
+        .card-body {
+            padding: 1.5rem;
+        }
+        
+        .card-body p {
+            margin-bottom: 1rem;
+            color: #666;
+        }
+        
+        .feature-list {
+            list-style: none;
+        }
+        
+        .feature-list li {
+            padding: 0.5rem 0;
+            color: #555;
+        }
+        
+        .feature-list li:before {
+            content: "✓ ";
+            color: var(--success);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+        
+        .alt-section {
+            background: var(--light);
+        }
+        
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+        
+        footer p {
+            margin: 0.5rem 0;
+        }
+        
+        .tech-stack {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .tech-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 0.5rem;
+            border: 1px solid #e9ecef;
+        }
+        
+        .tech-item strong {
+            display: block;
+            margin: 1rem 0;
+            font-size: 1.1rem;
+        }
+        
+        .code-block {
+            background: #f5f5f5;
+            border-left: 4px solid var(--primary);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0.25rem;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            header p {
+                font-size: 1rem;
+            }
+            
+            .section h2 {
+                font-size: 1.75rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav a {
+                padding: 0.75rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#gameplay">Gameplay</a></li>
+            <li><a href="#implementations">Implementations</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#getting-started">Getting Started</a></li>
+            <li><a href="development-guide.html">Dev Guide</a></li>
+            <li><a href="modding-guide.html">Modding</a></li>
+            <li><a href="https://github.com/AkiUse306/akincraft" target="_blank">GitHub</a></li>
+        </ul>
+    </nav>
+
+    <header id="home">
+        <h1>🎮 Akincraft</h1>
+        <p>The ultimate dual-stack voxel sandbox engine platform</p>
+        <div class="btn-group">
+            <a href="https://github.com/AkiUse306/akincraft" class="btn btn-primary">View on GitHub</a>
+            <a href="#features" class="btn btn-outline">Explore Features</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="section alt-section" id="gameplay">
+            <h2>🎮 Gameplay Overview</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 2rem;">
+                Explore infinite procedurally-generated voxel worlds with multiple biomes, dynamic weather, and interactive block-building mechanics.
+            </p>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; margin: 2rem 0;">
+                <div>
+                    <div style="background: #222; border-radius: 0.5rem; padding: 20px; font-family: 'Courier New', monospace; font-size: 0.8rem; line-height: 1.4; overflow-x: auto; color: #0f0;">
+                        <pre>
+   ▲
+  ╱ ╲    Biome: Forest
+ ╱   ╲   Height: 64m
+╱─────╲  Time: 14:23 (Day)
+│█████│  Temp: Moderate
+│█████│  Humidity: High
+│ ░░░ │  
+│░   ░│  
+├──┼──┤  You are here →
+└─────┘ Interactive Block Placing
+│░░░░░│
+  
+[W] Forward    [E] Inventory
+[A] Left       [R] Craft
+[S] Back       [Space] Jump
+[D] Right      [LMB] Break
+               [RMB] Place
+                        </pre>
+                    </div>
+                    <div>
+                        <h3 style="color: var(--dark); margin-bottom: 1rem;">What You Can Do</h3>
+                        <ul class="feature-list" style="font-size: 1.1rem;">
+                        <li><strong>Explore</strong> - Navigate infinite procedurally-generated worlds</li>
+                    </div>
+                    <li><strong>Hunt & Farm</strong> - Encounter mobs and creatures throughout the world</li>
+                    <li><strong>Mine & Build</strong> - Break blocks and place new ones to create structures</li>
+                        <li><strong>Craft & Equip</strong> - Use inventory system to craft tools and items</li>
+                        <li><strong>Adapt to Weather</strong> - Experience rain, snow, and weather effects</li>
+                        <li><strong>Watch Day/Night</strong> - Dynamic lighting and time-based events</li>
+                        <li><strong>Survive & Persist</strong> - Save your progress and return later</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div style="margin-top: 3rem; padding: 2rem; background: white; border-radius: 0.5rem; border: 2px solid #e9ecef;">
+                <h3 style="text-align: center; margin-bottom: 1.5rem;">Biome Types</h3>
+                <div class="card-grid">
+                    <div style="background: linear-gradient(135deg, #87ceeb 0%, #98d8e8 100%); padding: 1.5rem; border-radius: 0.5rem; text-align: center; color: white;">
+                        <strong style="font-size: 1.2rem;">🏜️ Desert</strong>
+                        <p style="margin-top: 0.5rem;">Hot, dry terrain with sand dunes and rare water sources.</p>
+                    </div>
+                    <div style="background: linear-gradient(135deg, #90ee90 0%, #98d8e8 100%); padding: 1.5rem; border-radius: 0.5rem; text-align: center; color: white;">
+                        <strong style="font-size: 1.2rem;">🌾 Plains</strong>
+                        <p style="margin-top: 0.5rem;">Flat grasslands perfect for building and farming.</p>
+                    </div>
+                    <div style="background: linear-gradient(135deg, #228b22 0%, #2d5016 100%); padding: 1.5rem; border-radius: 0.5rem; text-align: center; color: white;">
+                        <strong style="font-size: 1.2rem;">🌲 Forest</strong>
+                        <p style="margin-top: 0.5rem;">Dense woodland with abundant trees and resources.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 3rem; padding: 2rem; background: white; border-radius: 0.5rem; border: 2px solid #e9ecef;">
+                <h3 style="text-align: center; margin-bottom: 1.5rem;">Available Blocks</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); gap: 1rem; text-align: center;">
+                    <div style="padding: 1rem; background: #8B4513; border-radius: 0.25rem; color: white; font-weight: bold;">Dirt</div>
+                    <div style="padding: 1rem; background: #A9A9A9; border-radius: 0.25rem; color: white; font-weight: bold;">Stone</div>
+                    <div style="padding: 1rem; background: #228B22; border-radius: 0.25rem; color: white; font-weight: bold;">Grass</div>
+                    <div style="padding: 1rem; background: #654321; border-radius: 0.25rem; color: white; font-weight: bold;">Log</div>
+                    <div style="padding: 1rem; background: #90EE90; border-radius: 0.25rem; color: white; font-weight: bold;">Leaves</div>
+                    <div style="padding: 1rem; background: #FFD700; border-radius: 0.25rem; color: white; font-weight: bold;">Gold Ore</div>
+                    <div style="padding: 1rem; background: #C0C0C0; border-radius: 0.25rem; color: white; font-weight: bold;">Iron Ore</div>
+                    <div style="padding: 1rem; background: #8B0000; border-radius: 0.25rem; color: white; font-weight: bold;">Redstone</div>
+                    <div style="padding: 1rem; background: #4169E1; border-radius: 0.25rem; color: white; font-weight: bold;">Water</div>
+                    <div style="padding: 1rem; background: #FF6347; border-radius: 0.25rem; color: white; font-weight: bold;">Lava</div>
+                    <div style="padding: 1rem; background: #FFD700; border-radius: 0.25rem; color: white; font-weight: bold;">Sand</div>
+                    <div style="padding: 1rem; background: #F0F0F0; border-radius: 0.25rem; color: white; font-weight: bold;">Snow</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="implementations">
+            <h2>Dual-Stack Implementation</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 2rem;">
+                Akincraft is available in two powerful implementations, allowing you to choose the technology stack that best fits your needs.
+            </p>
+            
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-header card-primary">🎮 Java Implementation</div>
+                    <div class="card-body">
+                        <p>Cross-platform voxel engine built with <strong>Java, Gradle, and LWJGL 3.3.1</strong>.</p>
+                        <ul class="feature-list">
+                            <li>Multiplayer networking</li>
+                            <li>Procedural terrain generation</li>
+                            <li>Comprehensive game mechanics</li>
+                            <li>Full game features with 8+ advanced systems</li>
+                        </ul>
+                        <p style="margin-top: 1rem; font-size: 0.9rem; color: #999;">
+                            Location: <code>java/</code> directory
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header card-success">🏗️ C++ Engine</div>
+                    <div class="card-body">
+                        <p>High-performance voxel engine in <strong>C++ with OpenGL rendering via GLFW</strong>.</p>
+                        <ul class="feature-list">
+                            <li>First-person controls</li>
+                            <li>Procedural terrain</li>
+                            <li>Mob spawning system</li>
+                            <li>Weapon systems</li>
+                        </ul>
+                        <p style="margin-top: 1rem; font-size: 0.9rem; color: #999;">
+                            Location: <code>cpp/</code> directory
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header card-info">🌐 Web Portal</div>
+                    <div class="card-body">
+                        <p>Administrative interface built with <strong>C# ASP.NET Core Razor Pages</strong>.</p>
+                        <ul class="feature-list">
+                            <li>Project information hub</li>
+                            <li>Feature showcase</li>
+                            <li>Block encyclopedia</li>
+                            <li>Modern responsive design</li>
+                        </ul>
+                        <p style="margin-top: 1rem; font-size: 0.9rem; color: #999;">
+                            Location: <code>website/</code> directory
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section alt-section" id="features">
+            <h2>Game Features</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 2rem;">
+                Discover the advanced systems powering Akincraft's immersive gameplay.
+            </p>
+            
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-header card-primary">🌐 Multiplayer Networking</div>
+                    <div class="card-body">
+                        <p>Play with friends in real-time with the advanced TCP-based networking system.</p>
+                        <ul class="feature-list">
+                            <li>Multi-client server architecture</li>
+                            <li>Real-time position synchronization</li>
+                            <li>Object serialization for updates</li>
+                            <li>Scalable for multiple players</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header card-success">🏔️ Procedural Terrain</div>
+                    <div class="card-body">
+                        <p>Endless worlds generated with advanced procedural algorithms and biome systems.</p>
+                        <ul class="feature-list">
+                            <li>6 Unique biomes</li>
+                            <li>Multi-octave Perlin noise</li>
+                            <li>Cave generation system</li>
+                            <li>Ore distribution by depth</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header card-info">⛏️ Block System</div>
+                    <div class="card-body">
+                        <p>Comprehensive block placement and destruction mechanics with 12+ block types.</p>
+                        <ul class="feature-list">
+                            <li>15+ unique block types</li>
+                            <li>Greedy mesh optimization</li>
+                            <li>Block property system</li>
+                            <li>Real-time breaking/placing</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header card-primary">🎒 Inventory & Crafting</div>
+                    <div class="card-body">
+                        <p>Intuitive inventory management and crafting system with hotbar support.</p>
+                        <ul class="feature-list">
+                            <li>Visual inventory grid</li>
+                            <li>Crafting recipes</li>
+                            <li>Tool crafting & repairs</li>
+                            <li>Quick hotbar access</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header card-success">🌙 Day/Night Cycle & Weather</div>
+                    <div class="card-body">
+                        <p>Dynamic lighting and time-based gameplay mechanics with weather systems.</p>
+                        <ul class="feature-list">
+                            <li>Smooth time progression</li>
+                            <li>Adaptive lighting</li>
+                            <li>Rain & snow weather</li>
+                            <li>Mob spawning by time</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header card-info">💾 Persistence & Combat</div>
+                    <div class="card-body">
+                        <p>Save your worlds, manage health, and engage in combat with hostile mobs and creatures.</p>
+                        <ul class="feature-list">
+                            <li>World save/load system</li>
+                            <li>Player health & damage</li>
+                            <li>Mob AI & combat</li>
+                            <li>Item durability</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header" style="background: #FF6B6B;">👁️ First-Person Camera</div>
+                    <div class="card-body">
+                        <p>Full 3D first-person perspective with smooth camera controls and collision detection.</p>
+                        <ul class="feature-list">
+                            <li>Smooth camera movement</li>
+                            <li>Collision detection</li>
+                            <li>Gravity & jumping</li>
+                            <li>Block raycasting</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header" style="background: #4ECDC4;">🎨 Advanced Rendering</div>
+                    <div class="card-body">
+                        <p>High-performance OpenGL rendering with optimized mesh generation.</p>
+                        <ul class="feature-list">
+                            <li>Greedy mesh optimization</li>
+                            <li>Frustum culling</li>
+                            <li>Chunk LOD system</li>
+                            <li>60+ FPS performance</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header" style="background: #95E1D3;">🌍 Virtual Physics</div>
+                    <div class="card-body">
+                        <p>Physical simulation with gravity, collision, and realistic block interactions.</p>
+                        <ul class="feature-list">
+                            <li>AABB collision detection</li>
+                            <li>Gravity simulation</li>
+                            <li>Jump mechanics</li>
+                            <li>Falling damage</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="gameplay-shows">
+            <h2>Player Stats & Mechanics</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 2rem;">
+                Manage your character's stats and interact with the game world.
+            </p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                <div style="background: white; border: 1px solid #e9ecef; border-radius: 0.5rem; padding: 1.5rem; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);">
+                    <h3 style="margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                        ❤️ Health System
+                    </h3>
+                    <p style="color: #666; margin-bottom: 1rem;">
+                        Manage your health by avoiding damage and finding medical items. Your health regenerates slowly when not in danger.
+                    </p>
+                    <div style="background: #f5f5f5; padding: 1rem; border-radius: 0.25rem; font-family: monospace; font-size: 0.9rem;">
+                        Health: [████████░░] 80/100<br>
+                        Status: Healthy
+                    </div>
+                </div>
+
+                <div style="background: white; border: 1px solid #e9ecef; border-radius: 0.5rem; padding: 1.5rem; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);">
+                    <h3 style="margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                        🔧 Tool System
+                    </h3>
+                    <p style="color: #666; margin-bottom: 1rem;">
+                        Craft and equip different tools. Each tool is suited for specific block types and degrades with use.
+                    </p>
+                    <ul style="list-style: none; color: #555;">
+                        <li>⚒️ Pickaxe - Mine ore</li>
+                        <li>🪓 Axe - Chop wood</li>
+                        <li>🔨 Shovel - Dig soil</li>
+                        <li>🗡️ Sword - Combat</li>
+                    </ul>
+                </div>
+
+                <div style="background: white; border: 1px solid #e9ecef; border-radius: 0.5rem; padding: 1.5rem; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);">
+                    <h3 style="margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                        📦 Inventory
+                    </h3>
+                    <p style="color: #666; margin-bottom: 1rem;">
+                        Limited inventory space encourages strategic decision-making. Items stack for efficient storage.
+                    </p>
+                    <div style="background: #f5f5f5; padding: 1rem; border-radius: 0.25rem; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem;">
+                        <div style="background: white; border: 1px solid #ddd; padding: 0.5rem; text-align: center; font-size: 0.8rem;">📦 x64</div>
+                        <div style="background: white; border: 1px solid #ddd; padding: 0.5rem; text-align: center; font-size: 0.8rem;">📦 x32</div>
+                        <div style="background: white; border: 1px solid #ddd; padding: 0.5rem; text-align: center; font-size: 0.8rem;">⚒️ x1</div>
+                        <div style="background: #e9ecef; border: 1px solid #ddd; padding: 0.5rem; text-align: center; font-size: 0.8rem;">-</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="getting-started">
+            <h2>Getting Started</h2>
+            
+            <div class="tech-stack">
+                <div class="tech-item">
+                    <strong>Java Stack</strong>
+                    <p>Java 21 + LWJGL + OpenGL</p>
+                    <div class="code-block">cd java<br>./gradlew run</div>
+                </div>
+                
+                <div class="tech-item">
+                    <strong>C++ Stack</strong>
+                    <p>C++ + GLFW + OpenGL</p>
+                    <div class="code-block">cd cpp<br>mkdir -p build && cd build<br>cmake ..<br>cmake --build .<br>./akincraft_cpp</div>
+                </div>
+                
+                <div class="tech-item">
+                    <strong>Website</strong>
+                    <p>C# ASP.NET Core</p>
+                    <div class="code-block">cd website<br>dotnet run</div>
+                </div>
+            </div>
+
+            <div style="margin-top: 3rem; text-align: center;">
+                <h3 style="margin-bottom: 1.5rem;">Ready to Customize?</h3>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="development-guide.html" style="display: inline-block; padding: 1rem 2rem; background: var(--primary); color: white; text-decoration: none; border-radius: 0.5rem; font-weight: 600; transition: all 0.3s;">📚 Development Guide</a>
+                    <a href="modding-guide.html" style="display: inline-block; padding: 1rem 2rem; background: var(--success); color: white; text-decoration: none; border-radius: 0.5rem; font-weight: 600; transition: all 0.3s;">🎮 Modding Guide</a>
+                    <a href="API_REFERENCE.md" style="display: inline-block; padding: 1rem 2rem; background: var(--info); color: white; text-decoration: none; border-radius: 0.5rem; font-weight: 600; transition: all 0.3s;">📖 API Reference</a>
+                    <a href="CUSTOMIZATION.md" style="display: inline-block; padding: 1rem 2rem; background: #FF6B6B; color: white; text-decoration: none; border-radius: 0.5rem; font-weight: 600; transition: all 0.3s;">✅ Customization Checklist</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p><strong>Akincraft</strong> - A dual-stack voxel sandbox engine</p>
+        <p>Built with ❤️ by <a href="https://github.com/AkiUse306" style="color: #0dcaf0; text-decoration: none;">AkiUse306</a></p>
+        <p style="font-size: 0.9rem; margin-top: 1rem; opacity: 0.8;">
+            <a href="https://github.com/AkiUse306/akincraft" style="color: #0dcaf0; text-decoration: none;">GitHub Repository</a> •
+            <a href="https://github.com/AkiUse306/akincraft/blob/main/LICENSE" style="color: #0dcaf0; text-decoration: none;">License</a>
+        </p>
+    </footer>
+</body>
+</html>

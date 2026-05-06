@@ -1,0 +1,6 @@
+/workspaces/code-sim/src/AI.CodeAssistant.Infrastructure/obj/Debug/net10.0/AI.CodeAssistant.Infrastructure.csproj.AssemblyReference.cache
+/workspaces/code-sim/src/AI.CodeAssistant.Infrastructure/obj/Debug/net10.0/AI.CodeAssistant.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+/workspaces/code-sim/src/AI.CodeAssistant.Infrastructure/obj/Debug/net10.0/AI.CodeAssistant.Infrastructure.AssemblyInfoInputs.cache
+/workspaces/code-sim/src/AI.CodeAssistant.Infrastructure/obj/Debug/net10.0/AI.CodeAssistant.Infrastructure.AssemblyInfo.cs
+/workspaces/code-sim/src/AI.CodeAssistant.Infrastructure/obj/Debug/net10.0/AI.CodeAssistant.Infrastructure.csproj.CoreCompileInputs.cache
+/workspaces/code-sim/src/AI.CodeAssistant.Infrastructure/obj/Debug/net10.0/AI.CodeAssistant.Infrastructure.sourcelink.json

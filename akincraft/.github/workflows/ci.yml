@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  java:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: temurin
+          java-version: 21
+      - name: Build and run Java prototype
+        run: |
+         cd java
+         ./gradlew --no-daemon clean run
+
+  cpp:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake build-essential python3 libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev libgl1-mesa-dev
+      - name: Build C++ prototype
+        run: |
+         cd cpp
+         dotnet build
+         mkdir -p build
+         cd build
+         cmake ..
+         cmake --build .
+      - name: Run C++ binary
+        run: |
+          cd cpp/build
+          ./akincraft_cpp

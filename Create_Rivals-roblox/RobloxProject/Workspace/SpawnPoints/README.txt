@@ -1,0 +1,1 @@
+SpawnPoints folder section for player spawn locations.

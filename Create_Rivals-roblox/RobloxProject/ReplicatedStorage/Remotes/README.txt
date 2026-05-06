@@ -1,0 +1,1 @@
+RemoteEvents should be created at runtime by GameInit or manually in Studio: DealDamage, BuyItem, OpenEgg, EquipWeapon, TeleportToArena, TeleportToHub

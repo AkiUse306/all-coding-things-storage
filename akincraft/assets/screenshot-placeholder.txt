@@ -1,0 +1,3 @@
+Placeholder screenshot for Akincraft.
+
+The Java and C++ prototypes render a procedural voxel terrain with multiple biomes and basic player navigation.

@@ -1,0 +1,3 @@
+/workspaces/rg-Create_Rivals/local/build/CMakeFiles/rivals-client.dir
+/workspaces/rg-Create_Rivals/local/build/CMakeFiles/edit_cache.dir
+/workspaces/rg-Create_Rivals/local/build/CMakeFiles/rebuild_cache.dir

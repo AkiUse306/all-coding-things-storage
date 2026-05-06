@@ -1,0 +1,1 @@
+/usr/bin/c++ "CMakeFiles/rivals-client.dir/main.cpp.o" -o rivals-client 

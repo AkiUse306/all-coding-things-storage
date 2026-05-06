@@ -1,0 +1,151 @@
+name: Build C++ CLI & Release Binaries
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  build-linux:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y cmake build-essential libcurl4-openssl-dev
+    
+    - name: Build C++ client
+      run: |
+        cd local
+        mkdir -p build
+        cd build
+        cmake ..
+        make
+    
+    - name: Upload Linux binary
+      uses: actions/upload-artifact@v3
+      with:
+        name: rivals-client-linux-x64
+        path: local/build/rivals-client
+    
+    - name: Create checksums
+      run: |
+        cd local/build
+        sha256sum rivals-client > rivals-client-linux-x64.sha256
+
+  build-windows:
+    runs-on: windows-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Install CMake
+      uses: lukka/get-cmake@latest
+    
+    - name: Build C++ client
+      run: |
+        cd local
+        mkdir build
+        cd build
+        cmake ..
+        cmake --build . --config Release
+    
+    - name: Upload Windows binary
+      uses: actions/upload-artifact@v3
+      with:
+        name: rivals-client-windows-x64
+        path: local/build/Release/rivals-client.exe
+
+  build-macos:
+    runs-on: macos-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Install dependencies
+      run: brew install cmake curl
+    
+    - name: Build C++ client
+      run: |
+        cd local
+        mkdir -p build
+        cd build
+        cmake ..
+        make
+    
+    - name: Upload macOS binary
+      uses: actions/upload-artifact@v3
+      with:
+        name: rivals-client-macos-x64
+        path: local/build/rivals-client
+
+  create-release:
+    needs: [build-linux, build-windows, build-macos]
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Download all artifacts
+      uses: actions/download-artifact@v3
+    
+    - name: Create release archives
+      run: |
+        mkdir -p release-artifacts
+        
+        # Linux
+        cd rivals-client-linux-x64
+        tar -czf ../release-artifacts/rivals-client-linux-x64.tar.gz rivals-client
+        cd ..
+        
+        # Windows
+        cd rivals-client-windows-x64
+        zip -r ../release-artifacts/rivals-client-windows-x64.zip rivals-client.exe
+        cd ..
+        
+        # macOS
+        cd rivals-client-macos-x64
+        tar -czf ../release-artifacts/rivals-client-macos-x64.tar.gz rivals-client
+        cd ..
+    
+    - name: Create Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: release-artifacts/*
+        body: |
+          🎮 Create Rivals C++ CLI Client v${{ github.ref_name }}
+          
+          ### Download for Your Platform:
+          
+          **Linux (x64)**
+          - `rivals-client-linux-x64.tar.gz`
+          - Extract: `tar -xzf rivals-client-linux-x64.tar.gz`
+          - Run: `./rivals-client`
+          
+          **Windows (x64)**
+          - `rivals-client-windows-x64.zip`
+          - Extract and run: `rivals-client.exe`
+          
+          **macOS (x64)**
+          - `rivals-client-macos-x64.tar.gz`
+          - Extract: `tar -xzf rivals-client-macos-x64.tar.gz`
+          - Run: `./rivals-client`
+          
+          ### Features:
+          ✅ File-based storage (no database needed)
+          ✅ Interactive menu system
+          ✅ Standalone CLI tool
+          ✅ Cross-platform support
+          
+          ### Usage:
+          1. Extract the archive for your platform
+          2. Run the executable: `./rivals-client` (Linux/macOS) or `rivals-client.exe` (Windows)
+          3. Select menu options to manage players and matches
+          
+          Data is stored in `./data/` directory.
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

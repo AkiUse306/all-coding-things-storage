@@ -1,0 +1,167 @@
+.browser-view-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: #1f2937;
+    border-right: 1px solid #374151;
+  }
+  
+  .address-bar {
+    display: flex;
+    gap: 8px;
+    padding: 12px 16px;
+    background: linear-gradient(to bottom, #111827, #0f1419);
+    border-bottom: 1px solid #374151;
+    align-items: center;
+  }
+  
+  .address-input {
+    flex: 1;
+    padding: 10px 14px;
+    background: rgba(55, 65, 81, 0.5);
+    border: 1px solid rgba(107, 114, 128, 0.4);
+    border-radius: 8px;
+    color: #f3f4f6;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.2s;
+  }
+  
+  .address-input:focus {
+    background: rgba(75, 85, 99, 0.6);
+    border-color: #60a5fa;
+    box-shadow: 0 0 8px rgba(96, 165, 250, 0.2);
+  }
+  
+  .address-input::placeholder {
+    color: #9ca3af;
+  }
+  
+  .address-go-btn,
+  .favorite-btn {
+    padding: 10px 16px;
+    background: rgba(96, 165, 250, 0.2);
+    border: 1px solid rgba(96, 165, 250, 0.3);
+    color: #60a5fa;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition:  all 0.2s;
+    font-size: 14px;
+  }
+  
+  .address-go-btn:hover {
+    background: rgba(96, 165, 250, 0.4);
+    border-color: rgba(96, 165, 250, 0.6);
+  }
+  
+  .favorite-btn {
+    padding: 8px 12px;
+  }
+  
+  .favorite-btn:hover {
+    background: rgba(251, 191, 36, 0.3);
+    border-color: rgba(251, 191, 36, 0.6);
+    color: #fbbf24;
+  }
+  
+  .loading-bar {
+    height: 3px;
+    background: linear-gradient(
+      to right,
+      #60a5fa,
+      #3b82f6,
+      #60a5fa
+    );
+    background-size: 200% 100%;
+    animation: loading 1. 5s infinite;
+  }
+  
+  @keyframes loading {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+  
+  .webview-container {
+    flex:  1;
+    overflow: hidden;
+    background: #fff;
+    position: relative;
+  }
+  
+  .webview {
+    width: 100%;
+    height:  100%;
+    border: none;
+    background: #fff;
+  }
+  
+  .blank-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    background: linear-gradient(135deg, #0f1419 0%, #1a1f2e 100%);
+    color: #e5e7eb;
+  }
+  
+  .blank-page-content {
+    text-align:  center;
+    max-width: 500px;
+  }
+  
+  .blank-page-content h1 {
+    font-size: 32px;
+    margin-bottom: 16px;
+    color: #f3f4f6;
+  }
+  
+  .blank-page-content p {
+    font-size: 16px;
+    color: #9ca3af;
+    margin-bottom: 32px;
+  }
+  
+  .quick-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .quick-actions button {
+    padding: 10px 20px;
+    background: rgba(96, 165, 250, 0.2);
+    border: 1px solid rgba(96, 165, 250, 0.4);
+    color: #60a5fa;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition:  all 0.2s;
+  }
+  
+  .quick-actions button:hover {
+    background: rgba(96, 165, 250, 0.4);
+    border-color: rgba(96, 165, 250, 0.8);
+    transform: translateY(-2px);
+  }
+  
+  @media (max-width: 768px) {
+    .address-bar {
+      padding: 8px 12px;
+      gap: 6px;
+    }
+  
+    .address-input {
+      padding: 8px 12px;
+      font-size:  13px;
+    }
+  
+    .address-go-btn {
+      padding: 8px 12px;
+    }
+  }

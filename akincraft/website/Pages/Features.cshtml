@@ -1,0 +1,288 @@
+@page
+@model FeaturesModel
+@{
+    ViewData["Title"] = "Features - Akincraft";
+}
+
+<div class="page-header mb-4">
+    <h1 class="display-5">Game Features</h1>
+    <p class="text-muted">Discover the advanced systems powering Akincraft's immersive gameplay.</p>
+</div>
+
+<div class="row mb-4">
+    <!-- Networking -->
+    <div class="col-lg-6 mb-4">
+        <div class="card shadow-sm h-100 feature-card">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">🌐 Multiplayer Networking</h5>
+            </div>
+            <div class="card-body">
+                <p>Play with friends in real-time with the advanced TCP-based networking system.</p>
+                <ul class="list-unstyled">
+                    <li>✓ Multi-client server architecture</li>
+                    <li>✓ Real-time position synchronization</li>
+                    <li>✓ Object serialization for updates</li>
+                    <li>✓ Scalable for multiple players</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terrain Generation -->
+    <div class="col-lg-6 mb-4">
+        <div class="card shadow-sm h-100 feature-card">
+            <div class="card-header bg-success text-white">
+                <h5 class="mb-0">🏔️ Procedural Terrain</h5>
+            </div>
+            <div class="card-body">
+                <p>Endless worlds generated with advanced procedural algorithms and biome systems.</p>
+                <ul class="list-unstyled">
+                    <li>✓ 6 Unique biomes (Desert, Plains, Forest, etc.)</li>
+                    <li>✓ Multi-octave Perlin noise</li>
+                    <li>✓ Cave generation system</li>
+                    <li>✓ Ore distribution by depth</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Crafting System -->
+    <div class="col-lg-6 mb-4">
+        <div class="card shadow-sm h-100 feature-card">
+            <div class="card-header bg-warning text-dark">
+                <h5 class="mb-0">⚒️ Crafting & Smelting</h5>
+            </div>
+            <div class="card-body">
+                <p>Transform raw materials into tools, weapons, and blocks with comprehensive recipes.</p>
+                <ul class="list-unstyled">
+                    <li>✓ 15+ Pre-configured recipes</li>
+                    <li>✓ Furnace smelting system</li>
+                    <li>✓ Crafting table recipes</li>
+                    <li>✓ Experience system</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Inventory -->
+    <div class="col-lg-6 mb-4">
+        <div class="card shadow-sm h-100 feature-card">
+            <div class="card-header bg-info text-white">
+                <h5 class="mb-0">📦 Inventory Management</h5>
+            </div>
+            <div class="card-body">
+                <p>Manage resources efficiently with an advanced inventory system.</p>
+                <ul class="list-unstyled">
+                    <li>✓ Stack limiting (64 items max)</li>
+                    <li>✓ Multiple inventory slots</li>
+                    <li>✓ Item categorization</li>
+                    <li>✓ Quick access functionality</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Health & Combat -->
+    <div class="col-lg-6 mb-4">
+        <div class="card shadow-sm h-100 feature-card">
+            <div class="card-header bg-danger text-white">
+                <h5 class="mb-0">❤️ Combat System</h5>
+            </div>
+            <div class="card-body">
+                <p>Engage in strategic combat with health, hunger, and armor mechanics.</p>
+                <ul class="list-unstyled">
+                    <li>✓ Health (0-20 HP)</li>
+                    <li>✓ Hunger & Saturation</li>
+                    <li>✓ Armor damage reduction</li>
+                    <li>✓ Invulnerability frames</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Block Placement & Breaking -->
+    <div class="col-lg-6 mb-4">
+        <div class="card shadow-sm h-100 feature-card">
+            <div class="card-header bg-secondary text-white">
+                <h5 class="mb-0">🧱 Block Mechanics</h5>
+            </div>
+            <div class="card-body">
+                <p>Place and break blocks with sophisticated physics and validation systems.</p>
+                <ul class="list-unstyled">
+                    <li>✓ Raycast-based placement</li>
+                    <li>✓ Face-based positioning</li>
+                    <li>✓ Tool-based breaking speed</li>
+                    <li>✓ Proper drop system</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Enchantments -->
+    <div class="col-lg-6 mb-4">
+        <div class="card shadow-sm h-100 feature-card">
+            <div class="card-header bg-violet text-white">
+                <h5 class="mb-0">✨ Enchantment System</h5>
+            </div>
+            <div class="card-body">
+                <p>Enhance your tools and armor with powerful enchantments and effects.</p>
+                <ul class="list-unstyled">
+                    <li>✓ 10 Enchantment types</li>
+                    <li>✓ Leveled system (I-V)</li>
+                    <li>✓ Roman numeral display</li>
+                    <li>✓ Power scaling mechanics</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Block System -->
+    <div class="col-lg-6 mb-4">
+        <div class="card shadow-sm h-100 feature-card">
+            <div class="card-header bg-teal text-white">
+                <h5 class="mb-0">🎨 Minecraft Block System (92 Blocks)</h5>
+            </div>
+            <div class="card-body">
+                <p>Comprehensive block system with 26 authentic Minecraft blocks from A-Z and beyond.</p>
+                <ul class="list-unstyled">
+                    <li>✓ 92 Total blocks</li>
+                    <li>✓ 26 Minecraft blocks A-Z</li>
+                    <li>✓ Complete material properties</li>
+                    <li>✓ Tool requirements system</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Feature Highlights Section -->
+<div class="bg-light p-5 rounded mb-5">
+    <div class="row align-items-center">
+        <div class="col-md-6">
+            <h3 class="mb-3">Built for the Community</h3>
+            <p>Akincraft is developed with both C++ and Java implementations, providing flexibility for different use cases and development preferences.</p>
+            <ul class="list-unstyled mt-4">
+                <li class="mb-2"><strong>C++ Engine:</strong> High-performance OpenGL rendering with GLFW</li>
+                <li class="mb-2"><strong>Java Implementation:</strong> Cross-platform with LWJGL 3.3.1 and Gradle</li>
+                <li class="mb-2"><strong>Modular Design:</strong> Easy to extend and customize</li>
+                <li class="mb-2"><strong>Open Source:</strong> Available on GitHub for community contributions</li>
+            </ul>
+        </div>
+        <div class="col-md-6 text-center">
+            <div class="feature-stats">
+                <div class="stat-card mb-3">
+                    <h4 class="text-primary">8+</h4>
+                    <p>Advanced Systems</p>
+                </div>
+                <div class="stat-card mb-3">
+                    <h4 class="text-success">92</h4>
+                    <p>Game Blocks</p>
+                </div>
+                <div class="stat-card mb-3">
+                    <h4 class="text-info">90+</h4>
+                    <p>Item Types</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Performance & Optimization -->
+<div class="card shadow-sm mb-5">
+    <div class="card-header bg-dark text-white">
+        <h5 class="mb-0">⚡ Performance & Optimization</h5>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <h6 class="text-primary">Rendering</h6>
+                <ul class="list-unstyled small">
+                    <li>✓ Chunk-based world (16×128×16 blocks)</li>
+                    <li>✓ Frustum culling</li>
+                    <li>✓ Hardware-accelerated OpenGL</li>
+                    <li>✓ Optimized vertex buffer objects</li>
+                </ul>
+            </div>
+            <div class="col-md-6 mb-3">
+                <h6 class="text-success">Gameplay</h6>
+                <ul class="list-unstyled small">
+                    <li>✓ Efficient collision detection</li>
+                    <li>✓ Smart entity management</li>
+                    <li>✓ Cached chunk data</li>
+                    <li>✓ Optimized physics simulation</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Getting Started -->
+<div class="card bg-primary text-white shadow-sm">
+    <div class="card-body">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <h4 class="card-title mb-2">Ready to Play?</h4>
+                <p class="card-text">Check out the latest features and start building your own world. Akincraft is actively developed with new systems added regularly.</p>
+            </div>
+            <div class="col-md-4 text-md-end">
+                <a href="https://github.com/AkiUse306/akincraft" class="btn btn-light btn-lg">View on GitHub</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.feature-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.feature-card .card-header {
+    font-weight: 500;
+}
+
+.feature-card ul li {
+    padding: 6px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.feature-card ul li:last-child {
+    border-bottom: none;
+}
+
+.stat-card {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid #007bff;
+}
+
+.stat-card h4 {
+    margin: 0 0 8px 0;
+    font-weight: 700;
+}
+
+.stat-card p {
+    margin: 0;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.page-header {
+    border-bottom: 2px solid #e9ecef;
+    padding-bottom: 1rem;
+}
+
+.bg-violet {
+    background-color: #6f42c1 !important;
+}
+
+.bg-teal {
+    background-color: #20c997 !important;
+}
+</style>

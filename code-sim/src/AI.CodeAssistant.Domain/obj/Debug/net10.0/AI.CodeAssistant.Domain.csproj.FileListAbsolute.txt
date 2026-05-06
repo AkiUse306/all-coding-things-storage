@@ -1,0 +1,12 @@
+/workspaces/code-sim/src/AI.CodeAssistant.Domain/bin/Debug/net10.0/AI.CodeAssistant.Domain.deps.json
+/workspaces/code-sim/src/AI.CodeAssistant.Domain/bin/Debug/net10.0/AI.CodeAssistant.Domain.dll
+/workspaces/code-sim/src/AI.CodeAssistant.Domain/bin/Debug/net10.0/AI.CodeAssistant.Domain.pdb
+/workspaces/code-sim/src/AI.CodeAssistant.Domain/obj/Debug/net10.0/AI.CodeAssistant.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/workspaces/code-sim/src/AI.CodeAssistant.Domain/obj/Debug/net10.0/AI.CodeAssistant.Domain.AssemblyInfoInputs.cache
+/workspaces/code-sim/src/AI.CodeAssistant.Domain/obj/Debug/net10.0/AI.CodeAssistant.Domain.AssemblyInfo.cs
+/workspaces/code-sim/src/AI.CodeAssistant.Domain/obj/Debug/net10.0/AI.CodeAssistant.Domain.csproj.CoreCompileInputs.cache
+/workspaces/code-sim/src/AI.CodeAssistant.Domain/obj/Debug/net10.0/AI.CodeAssistant.Domain.sourcelink.json
+/workspaces/code-sim/src/AI.CodeAssistant.Domain/obj/Debug/net10.0/AI.CodeAssistant.Domain.dll
+/workspaces/code-sim/src/AI.CodeAssistant.Domain/obj/Debug/net10.0/refint/AI.CodeAssistant.Domain.dll
+/workspaces/code-sim/src/AI.CodeAssistant.Domain/obj/Debug/net10.0/AI.CodeAssistant.Domain.pdb
+/workspaces/code-sim/src/AI.CodeAssistant.Domain/obj/Debug/net10.0/ref/AI.CodeAssistant.Domain.dll

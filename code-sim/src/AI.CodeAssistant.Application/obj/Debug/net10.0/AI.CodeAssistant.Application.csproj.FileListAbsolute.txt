@@ -1,0 +1,16 @@
+/workspaces/code-sim/src/AI.CodeAssistant.Application/bin/Debug/net10.0/AI.CodeAssistant.Application.deps.json
+/workspaces/code-sim/src/AI.CodeAssistant.Application/bin/Debug/net10.0/AI.CodeAssistant.Application.dll
+/workspaces/code-sim/src/AI.CodeAssistant.Application/bin/Debug/net10.0/AI.CodeAssistant.Application.pdb
+/workspaces/code-sim/src/AI.CodeAssistant.Application/bin/Debug/net10.0/AI.CodeAssistant.Domain.dll
+/workspaces/code-sim/src/AI.CodeAssistant.Application/bin/Debug/net10.0/AI.CodeAssistant.Domain.pdb
+/workspaces/code-sim/src/AI.CodeAssistant.Application/obj/Debug/net10.0/AI.CodeAssistant.Application.csproj.AssemblyReference.cache
+/workspaces/code-sim/src/AI.CodeAssistant.Application/obj/Debug/net10.0/AI.CodeAssistant.Application.GeneratedMSBuildEditorConfig.editorconfig
+/workspaces/code-sim/src/AI.CodeAssistant.Application/obj/Debug/net10.0/AI.CodeAssistant.Application.AssemblyInfoInputs.cache
+/workspaces/code-sim/src/AI.CodeAssistant.Application/obj/Debug/net10.0/AI.CodeAssistant.Application.AssemblyInfo.cs
+/workspaces/code-sim/src/AI.CodeAssistant.Application/obj/Debug/net10.0/AI.CodeAssistant.Application.csproj.CoreCompileInputs.cache
+/workspaces/code-sim/src/AI.CodeAssistant.Application/obj/Debug/net10.0/AI.CodeAssistant.Application.sourcelink.json
+/workspaces/code-sim/src/AI.CodeAssistant.Application/obj/Debug/net10.0/AI.CodeA.2E145AEB.Up2Date
+/workspaces/code-sim/src/AI.CodeAssistant.Application/obj/Debug/net10.0/AI.CodeAssistant.Application.dll
+/workspaces/code-sim/src/AI.CodeAssistant.Application/obj/Debug/net10.0/refint/AI.CodeAssistant.Application.dll
+/workspaces/code-sim/src/AI.CodeAssistant.Application/obj/Debug/net10.0/AI.CodeAssistant.Application.pdb
+/workspaces/code-sim/src/AI.CodeAssistant.Application/obj/Debug/net10.0/ref/AI.CodeAssistant.Application.dll

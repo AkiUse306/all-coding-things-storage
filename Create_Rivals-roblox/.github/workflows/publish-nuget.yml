@@ -1,0 +1,67 @@
+name: Publish NuGet Packages
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '9.0.x'
+    
+    - name: Restore backend
+      run: dotnet restore backend/Matchmaker.csproj
+    
+    - name: Build backend
+      run: dotnet build backend/Matchmaker.csproj -c Release --no-restore
+    
+    - name: Pack backend
+      run: dotnet pack backend/Matchmaker.csproj -c Release -o ./nuget
+    
+    - name: Restore dashboard
+      run: dotnet restore local/LocalDashboard.csproj
+    
+    - name: Build dashboard
+      run: dotnet build local/LocalDashboard.csproj -c Release --no-restore
+    
+    - name: Pack dashboard
+      run: dotnet pack local/LocalDashboard.csproj -c Release -o ./nuget
+    
+    - name: Publish to NuGet
+      run: |
+        dotnet nuget push ./nuget/*.nupkg \
+          --api-key ${{ secrets.NUGET_API_KEY }} \
+          --source https://api.nuget.org/v3/index.json \
+          --skip-duplicate || echo "NuGet API key not configured - skipping NuGet publish"
+    
+    - name: Create Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: ./nuget/*.nupkg
+        body: |
+          📦 NuGet Packages for Create Rivals v${{ github.ref_name }}
+          
+          ### Backend (Matchmaker)
+          - C# ASP.NET Core 9.0 API server
+          - Player stats and matchmaking
+          - `dotnet add package Matchmaker`
+          
+          ### Dashboard (LocalDashboard)
+          - C# proxy server + HTML/CSS/JS UI
+          - Browser-based admin panel
+          - `dotnet add package LocalDashboard`
+          
+          See documentation for usage details.
+        draft: false
+        prerelease: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

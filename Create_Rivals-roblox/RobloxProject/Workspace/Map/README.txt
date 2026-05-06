@@ -1,0 +1,1 @@
+Map folder section for hub/arena world geometry and spawn areas.

@@ -1,0 +1,12 @@
+local Lighting = game:GetService("Lighting")
+local sky = Instance.new("Sky")
+sky.Name = "CustomSky"
+sky.SkyboxBk = "rbxassetid://572877594" -- example skybox ids
+sky.SkyboxDn = "rbxassetid://572877594"
+sky.SkyboxFt = "rbxassetid://572877594"
+sky.SkyboxLf = "rbxassetid://572877594"
+sky.SkyboxRt = "rbxassetid://572877594"
+sky.SkyboxUp = "rbxassetid://572877594"
+sky.MoonTextureId = "rbxassetid://343541133"
+sky.SunTextureId = "rbxassetid://343541133"
+sky.Parent = Lighting

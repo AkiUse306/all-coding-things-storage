@@ -1,0 +1,94 @@
+{
+  "name": "syncpoint",
+  "version": "1.0.0",
+  "description": "A desktop application for synchronizing files and data across devices",
+  "main": "dist/main.js",
+  "homepage": "./",
+  "author": "AkiUse306",
+  "license": "MIT",
+  "scripts": {
+    "dev": "concurrently \"npm run react-start\" \"wait-on http://localhost:3000 && npm run electron\"",
+    "react-start": "react-scripts start",
+    "react-build": "react-scripts build",
+    "electron": "electron .",
+    "electron-dev": "electron . --dev",
+    "build": "npm run react-build && npm run electron-build",
+    "electron-build": "tsc src/main.ts --outDir dist --module commonjs --target es2020",
+    "dist": "npm run build && electron-builder",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "lint": "eslint src --ext ts,tsx"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "electron-squirrel-startup": "^1.1.1",
+    "chokidar": "^3.5.3",
+    "fs-extra": "^11.2.0"
+  },
+  "devDependencies": {
+    "electron": "^27.0.0",
+    "typescript": "^5.3.3",
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "@types/node": "^20.10.6",
+    "@types/fs-extra": "^11.0.4",
+    "react-scripts": "5.0.1",
+    "concurrently": "^8.2.2",
+    "wait-on": "^7.0.1",
+    "electron-builder": "^24.6.4",
+    "@typescript-eslint/eslint-plugin": "^6.16.0",
+    "@typescript-eslint/parser": "^6.16.0",
+    "eslint": "^8.56.0",
+    "eslint-plugin-react": "^7.33.2"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "build": {
+    "appId": "com.syncpoint.app",
+    "productName": "SyncPoint",
+    "files": [
+      "dist/**/*",
+      "public/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ]
+    },
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "category": "public.app-category.utilities"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "category": "Utility"
+    }
+  }
+}

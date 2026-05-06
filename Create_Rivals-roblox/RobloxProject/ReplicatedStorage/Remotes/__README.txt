@@ -1,0 +1,1 @@
+In Roblox this folder should contain RemoteEvents named: DealDamage, BuyItem, OpenEgg, EquipWeapon
